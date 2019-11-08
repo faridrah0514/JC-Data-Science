@@ -1,0 +1,23 @@
+[
+    {
+        "nama": "andi",
+        "usia": 21,
+        "kota": "jakarta",
+        "pekerjaan": "engineer",
+        "gaji": "Rp 5.000.000"
+    },
+    {
+        "nama": "budi",
+        "usia": 22,
+        "kota": "bandung",
+        "pekerjaan": "accountant",
+        "gaji": "Rp 5.500.000"
+    },
+    {
+        "nama": "caca",
+        "usia": 23,
+        "kota": "jogja",
+        "pekerjaan": "CEO",
+        "gaji": "Rp 7.000.000"
+    }
+]
