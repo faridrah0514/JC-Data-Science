@@ -30,16 +30,16 @@ class keRomawi:
         }'''
         simbol_romawi={
             1 : 'I', #pengurangan #angka asli
-            # 4 : 'IV',
+            4 : 'IV',
             5 : 'V',
-            # 9 : 'IX',
+            9 : 'IX',
             10 : 'X', #pengurangan 
-            # 40 : 'XL', #pengurangan 
+            40 : 'XL', #pengurangan 
             50 : 'L',
-            # 90: 'XC',
+            90: 'XC',
             100: 'C', #pengurangan
             500: 'D',
-            # 900: 'CM',
+            900: 'CM',
             1000: 'M'
         }
 
@@ -75,5 +75,5 @@ class keRomawi:
         # print(rom)
         return rom
 
-rom1=keRomawi(3999)
+rom1=keRomawi(50)
 print(vars(rom1))
