@@ -16,11 +16,19 @@ def prima(x):
 
 
 
-def prima2(x):
-    for i in range(2,x):
-        prima=filter(lambda x: x==i or x%i,angka)
-    print(list(prima))
+# def prima2(x):
 
-prima2(5)
-# coba=filter(prima2, angka)
-# print(list(coba))
+#     prima=filter(lambda a,i: (a % i != 0) and (a > 1),range(x))
+#     print(list(prima))
+
+#prima2(angka)
+coba=filter(prima, angka)
+# coba2=filter(prima2, angka)
+
+print(list(coba))
+# print(list(coba2))
+
+# prima2(4)
+
+k=filter(lambda x, y: x > 5 and y > 7, (10,10))
+print(list(k))
