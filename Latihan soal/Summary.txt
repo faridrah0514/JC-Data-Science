@@ -1,0 +1,37 @@
+Tugas 
+# String
+. Menghitung Jumlah huruf tertentu dalam kalimat tanpa count()
+. Menghitung Jumlah kata tertetu tanpa count()
+# Aritmatika
+. Tugas Kaki Ayam Kambing
+. Ibu dan Anak
+# Operasi Set - Union, Intersect, dll
+. Union dan Intersect
+# List -
+. Hari ke seratus setelah hari X
+. Konversi nama hari
+# Condition
+. Konversi Nilai
+. CekGanjilGenap
+. Fungsi Pangkat dan Kuadrat
+. Operasi dengan input User (3 * #)
+. FizzBuzz
+. Morse
+. Caesar Chiper
+. Ubah huruf vokal menjadi O - lontong
+. Palindrom
+#
+. Membalik Kata dalam kalimat
+. Tugas Bintang2
+. Fungsi Pangkat
+. Fungsi Faktorial
+
+##lambda
+# CASE SOAL : var nomor = [1-100]
+# => angka genap => setiap angka genap di* 2
+# => hasilnya dijumlahkan satu sama lain
+# cekPrima
+
+#Class
+. Tugas Romawi
+. Membuat kelas untuk hitung mean, median, modus
