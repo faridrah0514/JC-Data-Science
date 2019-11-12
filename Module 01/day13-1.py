@@ -60,21 +60,35 @@ print(rev(x))
 ##############
 
 li=[
-    [1,2,3,10],
-    [4,5,6,11],
-    [7,8,9,12],
-    [13,14,15,16]
+    [1,2,3,10,25],
+    [4,5,6,11,26],
+    [7,8,9,12,27],
+    [13,14,15,16,28],
+    [17,18,19,20,29],
+    [21,22,23,24,30]
     ]
+
 new_li=[]
-for i in range(len(li)):
-    j=len(li[i])
-    sub_li=[]
-    while j > 0:
-        sub_li.append(li[j-1][i])
-        j-=1
-    new_li.append(sub_li)
+panjang=len(li)
+
+k=0
+for j in range(len(li[k])):
+    if k == (panjang - 1):
+        break
+    else:
+        sub_list=[]
+        m=panjang
+        for i in range(len(li)):
+            # print(f"m {m-1}")
+            # print(f"j {j}")
+            sub_list.append(li[m-1][j])
+            m-=1
+            # print(f"sub li {sub_list}")
+    new_li.append(sub_list) 
+    k+=1
+    
 print(new_li)
-# print(li)                  
+              
 
 
 
