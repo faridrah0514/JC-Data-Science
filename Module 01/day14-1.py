@@ -95,3 +95,28 @@ nambahin input dari user
 tambahin nama dan kota
 nomor akan increment sendiri
 '''
+
+#########################
+#input dari user ke xlsx#
+#########################
+import xlsxwriter
+import xlrd
+
+nama=input("masukkan nama: ")
+kota=input("masukkan kota: ")
+file_path, nama_sheet ='Data/data-excel-add-input-from-user.xlsx', 'DataKaryawan'
+file_excel=xlrd.open_workbook(file_path)
+open_sheet=file_excel.sheet_by_name(nama_sheet)
+data=[open_sheet.row_values(values) for values in range(open_sheet.nrows)]
+last_number=data[-1][0]
+data.append([last_number+1, nama, kota])
+
+file_excel_write=xlsxwriter.Workbook(file_path)
+write_sheet=file_excel_write.add_worksheet(nama_sheet)
+
+for i in range(len(data)):
+    for j in range(len(data[i])):
+        # print(f"ini i {i}, ini j {j}")
+        write_sheet.write(i,j, data[i][j])
+
+file_excel_write.close()
