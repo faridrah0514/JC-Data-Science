@@ -27,6 +27,7 @@ year_now=str(now).split()[0].split('-')
 club_name=input("Ketik Club: ")
 url='https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?t='+club_name
 request=requests.get(url)
+print(request.headers['Content-Type'])
 
 if request.json()['player']:
     tim_member=[]
