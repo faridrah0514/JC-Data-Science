@@ -32,9 +32,8 @@ for i in range(len(tr)):
         new_data.append(str(k.text).lstrip())
     new_data.insert(1,tr[i].find('img')['src'])
     data.append(dict(zip(head,new_data)))
-# print(data)
 
-    
+print(data)
 file_csv=open('digimon.csv', 'w', newline='')
 writer=csv.DictWriter(file_csv,fieldnames=head)
 writer.writeheader()
