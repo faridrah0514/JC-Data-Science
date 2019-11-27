@@ -1,0 +1,149 @@
+mysql> select *  from city where CountryCode='IDN' order by Population desc limit 10;
++-----+----------------+-------------+------------------+------------+
+| ID  | Name           | CountryCode | District         | Population |
++-----+----------------+-------------+------------------+------------+
+| 939 | Jakarta        | IDN         | Jakarta Raya     |    9604900 |
+| 940 | Surabaya       | IDN         | East Java        |    2663820 |
+| 941 | Bandung        | IDN         | West Java        |    2429000 |
+| 942 | Medan          | IDN         | Sumatera Utara   |    1843919 |
+| 943 | Palembang      | IDN         | Sumatera Selatan |    1222764 |
+| 944 | Tangerang      | IDN         | West Java        |    1198300 |
+| 945 | Semarang       | IDN         | Central Java     |    1104405 |
+| 946 | Ujung Pandang  | IDN         | Sulawesi Selatan |    1060257 |
+| 947 | Malang         | IDN         | East Java        |     716862 |
+| 948 | Bandar Lampung | IDN         | Lampung          |     680332 |
++-----+----------------+-------------+------------------+------------+
+10 rows in set (0.00 sec)
+
+mysql>
+mysql> select id, city.name as nama_kota, district, country.name as negara, city.population from city inner join country where city.countrycode = country.code order by population desc limit 10;
++------+-------------------+------------------+--------------------+------------+
+| id   | nama_kota         | district         | negara             | population |
++------+-------------------+------------------+--------------------+------------+
+| 1024 | Mumbai (Bombay)   | Maharashtra      | India              |   10500000 |
+| 2331 | Seoul             | Seoul            | South Korea        |    9981619 |
+|  206 | SÃ£o Paulo        | SÃ£o Paulo       | Brazil             |    9968485 |
+| 1890 | Shanghai          | Shanghai         | China              |    9696300 |
+|  939 | Jakarta           | Jakarta Raya     | Indonesia          |    9604900 |
+| 2822 | Karachi           | Sindh            | Pakistan           |    9269265 |
+| 3357 | Istanbul          | Istanbul         | Turkey             |    8787958 |
+| 2515 | Ciudad de MÃ©xico | Distrito Federal | Mexico             |    8591309 |
+| 3580 | Moscow            | Moscow (City)    | Russian Federation |    8389200 |
+| 3793 | New York          | New York         | United States      |    8008278 |
++------+-------------------+------------------+--------------------+------------+
+10 rows in set (0.01 sec)
+
+mysql>
+mysql> select code, name, continent, region, indepyear as tahun_merdeka from country where indepyear is not null order by indepyear limit 10;
++------+----------------+-----------+------------------+---------------+
+| code | name           | continent | region           | tahun_merdeka |
++------+----------------+-----------+------------------+---------------+
+| CHN  | China          | Asia      | Eastern Asia     |         -1523 |
+| ETH  | Ethiopia       | Africa    | Eastern Africa   |         -1000 |
+| JPN  | Japan          | Asia      | Eastern Asia     |          -660 |
+| DNK  | Denmark        | Europe    | Nordic Countries |           800 |
+| SWE  | Sweden         | Europe    | Nordic Countries |           836 |
+| FRA  | France         | Europe    | Western Europe   |           843 |
+| SMR  | San Marino     | Europe    | Southern Europe  |           885 |
+| GBR  | United Kingdom | Europe    | British Islands  |          1066 |
+| PRT  | Portugal       | Europe    | Southern Europe  |          1143 |
+| AND  | Andorra        | Europe    | Southern Europe  |          1278 |
++------+----------------+-----------+------------------+---------------+
+10 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql> select continent as Benua, count(name) as Jumlah_Negara, sum(population) as Populas, avg(lifeexpectancy) as Rata_AngkaHrpnHdp from country group by continent having count(name) > 10 order by sum(population) desc;
++---------------+---------------+------------+-------------------+
+| Benua         | Jumlah_Negara | Populas    | Rata_AngkaHrpnHdp |
++---------------+---------------+------------+-------------------+
+| Asia          |            51 | 3705025700 |          67.44118 |
+| Africa        |            58 |  784475000 |          52.57193 |
+| Europe        |            46 |  730074600 |          75.14773 |
+| North America |            37 |  482993000 |          72.99189 |
+| South America |            14 |  345780000 |          70.94615 |
+| Oceania       |            28 |   30401150 |          69.71500 |
++---------------+---------------+------------+-------------------+
+6 rows in set (0.00 sec)
+
+mysql>
+mysql> select name as Nama, continent as Benua, lifeexpectancy as AngkaHarapanHidup, GNP from country where continent='asia' and lifeexpectancy > (select avg(lifeexpectancy) from country where continent='europe') order by lifeexpectancy desc;
++-----------+-------+-------------------+------------+
+| Nama      | Benua | AngkaHarapanHidup | GNP        |
++-----------+-------+-------------------+------------+
+| Macao     | Asia  |              81.6 |    5749.00 |
+| Japan     | Asia  |              80.7 | 3787042.00 |
+| Singapore | Asia  |              80.1 |   86503.00 |
+| Hong Kong | Asia  |              79.5 |  166448.00 |
+| Israel    | Asia  |              78.6 |   97477.00 |
+| Jordan    | Asia  |              77.4 |    7526.00 |
+| Cyprus    | Asia  |              76.7 |    9333.00 |
+| Taiwan    | Asia  |              76.4 |  256254.00 |
+| Kuwait    | Asia  |              76.1 |   27037.00 |
++-----------+-------+-------------------+------------+
+9 rows in set (0.00 sec)
+
+mysql>
+mysql> select countrycode, country.name as name, language, isofficial, percentage from countrylanguage inner join country where country.code = countrycode and language='english' and isofficial='T' order by percentage desc limit 10;
++-------------+----------------------+----------+------------+------------+
+| countrycode | name                 | language | isofficial | percentage |
++-------------+----------------------+----------+------------+------------+
+| BMU         | Bermuda              | English  | T          |      100.0 |
+| IRL         | Ireland              | English  | T          |       98.4 |
+| GBR         | United Kingdom       | English  | T          |       97.3 |
+| GIB         | Gibraltar            | English  | T          |       88.9 |
+| NZL         | New Zealand          | English  | T          |       87.0 |
+| USA         | United States        | English  | T          |       86.2 |
+| VIR         | Virgin Islands, U.S. | English  | T          |       81.7 |
+| AUS         | Australia            | English  | T          |       81.2 |
+| CAN         | Canada               | English  | T          |       60.4 |
+| BLZ         | Belize               | English  | T          |       50.8 |
++-------------+----------------------+----------+------------+------------+
+10 rows in set (0.00 sec)
+
+mysql>
+mysql> select country.name as Negara_ASEAN, country.population as Populasi_Negara, country.gnp as GNP, city.name as Ibukota, city.population as Populasi_Ibukota from country inner join city on country.capital = city.id where country.name in('Brunei','Cambodia','east timor','indonesia','laos','malaysia','myanmar','philippines','singapore','thailand','vietnam') order by country.name;
++--------------+-----------------+-----------+---------------------+------------------+
+| Negara_ASEAN | Populasi_Negara | GNP       | Ibukota             | Populasi_Ibukota |
++--------------+-----------------+-----------+---------------------+------------------+
+| Brunei       |          328000 |  11705.00 | Bandar Seri Begawan |            21484 |
+| Cambodia     |        11168000 |   5121.00 | Phnom Penh          |           570155 |
+| East Timor   |          885000 |      0.00 | Dili                |            47900 |
+| Indonesia    |       212107000 |  84982.00 | Jakarta             |          9604900 |
+| Laos         |         5433000 |   1292.00 | Vientiane           |           531800 |
+| Malaysia     |        22244000 |  69213.00 | Kuala Lumpur        |          1297526 |
+| Myanmar      |        45611000 | 180375.00 | Rangoon (Yangon)    |          3361700 |
+| Philippines  |        75967000 |  65107.00 | Manila              |          1581082 |
+| Singapore    |         3567000 |  86503.00 | Singapore           |          4017733 |
+| Thailand     |        61399000 | 116416.00 | Bangkok             |          6320174 |
+| Vietnam      |        79832000 |  21929.00 | Hanoi               |          1410000 |
++--------------+-----------------+-----------+---------------------+------------------+
+11 rows in set (0.01 sec)
+
+mysql>
+mysql> select country.name as Negara_G20, country.population as Populasi_Negara, country.gnp as GNP, city.name as Ibukota, city.population as Populasi_Ibukota from country inner join city on country.capital = city.id where country.name in ('Argentina','Australia','Brazil','Canada','China','France','Germany','India','Indonesia','Japan','Mexico','Russian Federation','Saudi Arabia','South Africa','South Korea','Turkey','United Kingdom','United States') order by country.name;
++--------------------+-----------------+------------+-------------------+------------------+
+| Negara_G20         | Populasi_Negara | GNP        | Ibukota           | Populasi_Ibukota |
++--------------------+-----------------+------------+-------------------+------------------+
+| Argentina          |        37032000 |  340238.00 | Buenos Aires      |          2982146 |
+| Australia          |        18886000 |  351182.00 | Canberra          |           322723 |
+| Brazil             |       170115000 |  776739.00 | BrasÃ­lia         |          1969868 |
+| Canada             |        31147000 |  598862.00 | Ottawa            |           335277 |
+| China              |      1277558000 |  982268.00 | Peking            |          7472000 |
+| France             |        59225700 | 1424285.00 | Paris             |          2125246 |
+| Germany            |        82164700 | 2133367.00 | Berlin            |          3386667 |
+| India              |      1013662000 |  447114.00 | New Delhi         |           301297 |
+| Indonesia          |       212107000 |   84982.00 | Jakarta           |          9604900 |
+| Japan              |       126714000 | 3787042.00 | Tokyo             |          7980230 |
+| Mexico             |        98881000 |  414972.00 | Ciudad de MÃ©xico |          8591309 |
+| Russian Federation |       146934000 |  276608.00 | Moscow            |          8389200 |
+| Saudi Arabia       |        21607000 |  137635.00 | Riyadh            |          3324000 |
+| South Africa       |        40377000 |  116729.00 | Pretoria          |           658630 |
+| South Korea        |        46844000 |  320749.00 | Seoul             |          9981619 |
+| Turkey             |        66591000 |  210721.00 | Ankara            |          3038159 |
+| United Kingdom     |        59623400 | 1378330.00 | London            |          7285000 |
+| United States      |       278357000 | 8510700.00 | Washington        |           572059 |
++--------------------+-----------------+------------+-------------------+------------------+
+18 rows in set (0.00 sec)
+
+mysql>
