@@ -14,3 +14,5 @@ plt.xlabel('Nilai x')
 plt.ylabel('Nilai y')
 plt.legend()
 plt.show()
+
+np.swapaxes
