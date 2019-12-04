@@ -1,0 +1,13 @@
+data pegawai pt abc 2020;;;;
+;;;;
+no;nama;usia;kota;gaji
+1;andi;21;jakarta;5000000
+2;budi;;bandung;6000000
+3;caca;23;bogor;7000000
+4;euis;24;surabaya;7000000
+5;deni;25;semarang;8000000
+6;-;26;depok;7500000
+7;miki;27;tangerang;7600000
+8;kiki;28;n.a;
+;;;;
+pt abc;;;;

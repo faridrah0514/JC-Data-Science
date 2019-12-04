@@ -43,8 +43,19 @@ df.loc[1:3,'Aa'] = np.nan
 # df.set_index('Aa', inplace=True)
 print(df.index)
 df.index='a b c d e f'.split()
-df.values[0][0]=14051990
-print(df.values[0][0])
+# df.values[0][0]=14051990
+# print(df.values[0][0])
+# print(df)
+# print(df.isnull())
 print(df)
-print(df.isnull())
+for i in df:
+    print(i)
 
+
+#create dataframe dari:
+#csv, excel, json, tanpa pd.read_XXX
+
+#create dataframe dari:
+# dari database db.mysql
+# dari database db.mongodb
+# tanpa pd.read_sql
